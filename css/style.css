@@ -3,26 +3,26 @@ body {
     height: 600px;
 }
 
-.score{
+.score {
     position: absolute;
     left: -240px;
     top: 60px;
 
 }
 
-.topScore{
+.topScore {
     position: absolute;
     left: -20px;
     top: 60px;
 }
 
-.scores{
+.scores {
     position: relative;
     top: -620px;
     left: 50%;
 }
 
-.buttons{
+.buttons {
     position: relative;
     width: 100px;
     margin: auto;
