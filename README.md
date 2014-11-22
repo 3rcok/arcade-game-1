@@ -11,10 +11,10 @@ No README file is included or the file is incomplete.
 Required: Assume that the player who finds your github has no technical knowledge. How
 would they access your game?
 -----------------------------------------------------------------------------------
-... really? someone with "no technical knowledge" is trying to access my game on github? 
-At some point you have to make assumptions of your target audience. In this case if you 
-need the to reference a read me file you would not be the target audience. Without these
-assumptions things could easily get out of hand.
+Sorry dont remember seeing this requirement.... But, really? someone with "no technical knowledge" 
+is trying to access my game on github? At some point you have to make assumptions of your target 
+audience. In this case if you need the to reference a read me file you would not be the target 
+audience. Without these assumptions things could easily get out of hand.
 
 lol, ok here it is!
 
