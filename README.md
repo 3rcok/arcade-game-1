@@ -13,7 +13,7 @@ would they access your game?
 -----------------------------------------------------------------------------------
 ... really? someone with "no technical knowledge" is trying to access my game on github? 
 At some point you have to make assumptions of your target audience. In this case if you 
-need the to reference a read me file you would not be the target audience. Without these
+need to reference a read me file you would not be the target audience. Without these
 assumptions things could easily get out of hand.
 
 lol, ok here it is!

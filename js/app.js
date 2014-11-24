@@ -20,13 +20,14 @@
  *          
  * @param x - The x coordinate to spawn the object.
  * @param y - The y coordinate to spawn the object. 
+ * @param image - The sprit value for the object. 
  */
 var baseObj = function(x,y,image) {
     // The sprite holds the image to draw for this instance.
     this.sprite = image;
     this.x = x;
     this.y = y;
-}
+};
 
 /*
  * Purpose:  This var contains the function that will instantiate
@@ -51,7 +52,7 @@ var Enemy = function(x,y) {
     // This will add a random number of seconds to ts.
     // This is used to spaw another enemy instance.
     this.friend = ts + getRandomInt(1,5);
-}
+};
 /*
  * Purpose:  This method contains the function that will update
  *           enemy objects.
@@ -66,8 +67,7 @@ Enemy.prototype.update = function(dt) {
     this.x += (90*dt)+this.speedMod;
     // This holds the current time.
     var ts = Math.round((new Date()).getTime() / 1000);
-    if(this.friend === ts)
-    {
+    if(this.friend === ts) {
         // Get a random y (this is used as an index of valid rows).
         var randy = getRandomInt(0,3);
         // Get a random x.
@@ -82,9 +82,10 @@ Enemy.prototype.update = function(dt) {
     // If the index is at 14 go back to index 0,
     // by 14 the object should be well off the screen
     // so can be reused to save on memory.
-    if(index===14)
+    if(index === 14) {
         index = 0;
-}
+    }
+};
 
 /*
  * Purpose:  This method contains the function that will draw
@@ -96,7 +97,7 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     // draw the sprite image on the canvas at this enemys x and y.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 /*
  * Purpose:  This var contains the function that will instantiate
@@ -124,7 +125,7 @@ var Jewel = function(x,y) {
     var ts = Math.round((new Date()).getTime() / 1000);
     // // un-set the time, so this jewel won't spawn any more friends.
     this.friend = ts + getRandomInt(5,10);
-}
+};
 
 /*
  * Purpose:  This method contains the function that will update
@@ -139,8 +140,7 @@ Jewel.prototype.update = function(dt) {
     // Move the jewel across the screen.
     this.x += (90*dt)+this.speedMod;
     var ts = Math.round((new Date()).getTime() / 1000);
-    if(this.friend === ts)
-    {
+    if(this.friend === ts) {
         var randy = getRandomInt(0,3);
         var randx = getRandomInt(1,2) * -100;
         // spawn a new jewel on a random row.
@@ -149,9 +149,10 @@ Jewel.prototype.update = function(dt) {
         // set time to 0
         this.friend = 0;
     }
-    if(jIndex===14)
+    if(jIndex === 14) {
         jIndex = 0;
-}
+    }
+};
 
 /*
  * Purpose:  This method contains the function that will draw
@@ -163,7 +164,7 @@ Jewel.prototype.update = function(dt) {
 Jewel.prototype.render = function() {
     // draw the sprite image on the canvas at this jewels x and y.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 /*
  * Purpose:  This var contains the function that will instantiate
@@ -184,7 +185,7 @@ var Player = function() {
     
     // the speed modifier of the player.
     this.speed = 5;
-}
+};
 
 /*
  * Purpose:  This method contains the function that will handle
@@ -198,29 +199,38 @@ var Player = function() {
  */
 Player.prototype.handleInput = function(key) {
     // dont process new movement untill the previous movement is done.
-    if(this.moveX !== 0 || this.moveY !== 0)
-            return;
+    if(this.moveX !== 0 || this.moveY !== 0) {
+        return;
+    }
     
     // check the bondry, dont let player go off screen.
-    if(this.x>300 && key === 'right')
-            return;
-    if(this.x<100 && key === 'left')
-            return;
-    if(this.y<100 && key === 'up')
-            return;
-    if(this.y>359 && key === 'down')
-            return;
+    if(this.x>300 && key === 'right') {
+        return;
+    }
+    if(this.x<100 && key === 'left') {
+        return;
+    }
+    if(this.y<100 && key === 'up') {
+        return;
+    }
+    if(this.y>359 && key === 'down') {
+        return;
+    }
     
     // set player movement vars
-    if(key === 'up')
-            this.moveY -= 85;
-    if(key === 'down')
-            this.moveY += 85;
-    if(key === 'left')
-            this.moveX -= 100;
-    if(key === 'right')
-            this.moveX += 100;
-}
+    if(key === 'up') {
+        this.moveY -= 85;
+    }
+    if(key === 'down') {
+        this.moveY += 85;
+    }
+    if(key === 'left') {
+        this.moveX -= 100;
+    }
+    if(key === 'right') {
+        this.moveX += 100;
+    }
+};
 
 /*
  * Purpose:  This method contains the function that will update
@@ -233,27 +243,23 @@ Player.prototype.handleInput = function(key) {
  */
 Player.prototype.update = function(dt) {
     // thses will move the player a little bit each frame
-    if(this.moveX > 0)
-    {
+    if(this.moveX > 0) {
         this.x += this.speed;
         this.moveX -= this.speed;
     }
-    if(this.moveX < 0)
-    {
+    if(this.moveX < 0) {
         this.x -= this.speed;
         this.moveX += this.speed;
     }
-    if(this.moveY > 0)
-    {
+    if(this.moveY > 0) {
         this.y += this.speed;
         this.moveY -= this.speed;
     }
-    if(this.moveY < 0)
-    {
+    if(this.moveY < 0) {
         this.y -= this.speed;
         this.moveY += this.speed;
     }
-}
+};
 
 /*
  * Purpose:  This method contains the function that will draw
@@ -264,7 +270,7 @@ Player.prototype.update = function(dt) {
  */
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 /*
  * Purpose:  This function will return a random int between
@@ -313,24 +319,26 @@ document.addEventListener('click', function(e){
     return;
     // set mouse x and y
     mouse.x = e.pageX; 
-    mouse.y = e.pageY 
+    mouse.y = e.pageY; 
     
     var xDiff = player.x - mouse.x;
     var yDiff = player.y - mouse.y;
 
-    if(Math.abs(xDiff) > Math.abs(yDiff))
-    {
-        if(mouse.x > player.x)
+    if(Math.abs(xDiff) > Math.abs(yDiff)) {
+        if(mouse.x > player.x) {
             player.handleInput('right');
-        else
+        }
+        else {
             player.handleInput('left');
+        }
     }
-    else
-    {
-        if(mouse.y < player.y)
+    else {
+        if(mouse.y < player.y) {
             player.handleInput('up');
-        else
+        }
+        else {
             player.handleInput('down');
+        }
     }
 }, false);
 
@@ -347,7 +355,7 @@ var jIndex = 1;
 // Players current score.
 var score = 0;
 // Players top score.
-var topScore =0;
+var topScore = 0;
 // This array hold the vaild rows that enemies and jewels can spawn on.
 var validRows = [60,145,230];
 // Types of jewels
@@ -359,7 +367,6 @@ var mouse = {x: 0, y: 0};
 allJewels[0] = new Jewel(-200,validRows[1]);
 allEnemies[0] = new Enemy(-100,validRows[0]);
 allEnemies[1] = new Enemy(-400,validRows[2]);
-
 
 // Sound effects from http://www.flashkit.com/
 // Played when there is a collision with an enemy.

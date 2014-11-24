@@ -40,10 +40,9 @@ var Engine = (function(global) {
 
         lastTime = now;
         win.requestAnimationFrame(main);
-    };
+    }
 
     function init() {
-
         reset();
         lastTime = Date.now();
         main();
@@ -65,8 +64,7 @@ var Engine = (function(global) {
     {
         // check each enemy and see if the player has collided
         allEnemies.forEach(function(enemy) {
-            if(xBetween(enemy.x,player.x-20,player.x+40) && xBetween(enemy.y,player.y-20,player.y+40))
-            {
+            if(xBetween(enemy.x,player.x-20,player.x+40) && xBetween(enemy.y,player.y-20,player.y+40)) {
                 // play the kill sound
                 kill.play();
                 // reset the vars to starting points (except top score)
@@ -76,20 +74,18 @@ var Engine = (function(global) {
 	
         // check each jewel and see if the player has collided
         allJewels.forEach(function(jewel) {
-            if(xBetween(jewel.x,player.x-20,player.x+40) && xBetween(jewel.y,player.y-20,player.y+40))
-            {
+            if(xBetween(jewel.x,player.x-20,player.x+40) && xBetween(jewel.y,player.y-20,player.y+40)) {
                 // add the jewel score to the players score
                 score += jewel.score;
                 // display the new sore to the user
-                document.getElementById("score").innerHTML = "Score: "+score;
+                document.getElementById("score").innerHTML = "Score: " + score;
                 // disable the jewel
                 jewel.enabled = false;
                 // set the score to 0 (so the score only gets counted once per jewel
                 jewel.score = 0;
                 
                 // if the new score is greater, set that top score.
-                if(score>topScore)
-                {
+                if(score>topScore) {
                     topScore = score;
                     // display the new top score
                     document.getElementById("topScore").innerHTML = "Top Score: "+topScore;
@@ -110,10 +106,12 @@ var Engine = (function(global) {
      * @param x - Is (a < x < b)
      */
     function xBetween(x,a,b){
-        if(x>a && x<b)
+        if(x>a && x<b) {
             return true;
-        else
+        }
+        else {
             return false;
+        }
     }
 
 /*
@@ -168,8 +166,9 @@ var Engine = (function(global) {
      */
     function renderEntities() {
         allJewels.forEach(function(jewel) {
-            if(jewel.enabled)
+            if(jewel.enabled) {
                 jewel.render();
+            }
         });
         
         allEnemies.forEach(function(enemy) {
@@ -195,8 +194,8 @@ var Engine = (function(global) {
         allEnemies[0] = new Enemy(-200,60);
         allEnemies[1] = new Enemy(-400,230);
         score = 0;
-        document.getElementById("score").innerHTML = "Score: "+score;
-        document.getElementById("topScore").innerHTML = "Top Score: "+topScore;
+        document.getElementById("score").innerHTML = "Score: " + score;
+        document.getElementById("topScore").innerHTML = "Top Score: " + topScore;
     }
 
     /*
